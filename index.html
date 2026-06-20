@@ -26,31 +26,49 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+        
         body { font-family: 'Noto Sans SC', sans-serif; background-color: #121820; color: #E8ECF1; }
+        
         .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        
         .hero-gradient { background: linear-gradient(135deg, #121820 0%, #1E2938 50%, #121820 100%); }
+        
         .glow-text { text-shadow: 0 0 20px rgba(0, 212, 170, 0.3); }
+        
         .card-hover { transition: all 0.3s ease; }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 212, 170, 0.1); }
+        
         .nav-scrolled { background-color: rgba(18, 24, 32, 0.95); backdrop-filter: blur(10px); }
+        
         .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #00D4AA, transparent); }
+        
         .stat-number { background: linear-gradient(135deg, #00D4AA, #00B894); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         .accent-number { background: linear-gradient(135deg, #FF6B35, #FF8E53); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         .image-container { position: relative; overflow: hidden; border-radius: 12px; }
         .image-container img { transition: transform 0.5s ease; }
         .image-container:hover img { transform: scale(1.05); }
+        
+        .timeline-line { position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #00D4AA, #FF6B35); }
+        
         .map-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         @media (max-width: 768px) { .map-grid { grid-template-columns: 1fr; } }
+        
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #121820; }
         ::-webkit-scrollbar-thumb { background: #2D3A4F; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #00D4AA; }
+        
         .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #00D4AA, #FF6B35); z-index: 100; transition: width 0.1s; }
     </style>
 </head>
 <body class="antialiased">
+    <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 transition-all duration-300 py-4" id="navbar">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
@@ -69,6 +87,7 @@
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
+        <!-- Mobile Menu -->
         <div class="hidden md:hidden bg-brand-surface/95 backdrop-blur-lg mt-4 px-6 py-4 space-y-3" id="mobileMenu">
             <a href="#background" class="block py-2 hover:text-brand-primary" onclick="toggleMobileMenu()">研究背景</a>
             <a href="#analysis" class="block py-2 hover:text-brand-primary" onclick="toggleMobileMenu()">时空分析</a>
@@ -77,6 +96,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center relative overflow-hidden hero-gradient pt-20">
         <div class="absolute inset-0 opacity-20">
             <div class="absolute top-20 left-20 w-72 h-72 bg-brand-primary rounded-full blur-[120px]"></div>
@@ -127,6 +147,7 @@
 
     <div class="section-divider max-w-4xl mx-auto"></div>
 
+    <!-- Background Section -->
     <section id="background" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="scroll-reveal">
@@ -138,6 +159,7 @@
                 </div>
                 <p class="text-brand-muted text-lg mb-12 max-w-3xl">《深圳市国土空间总体规划（2021-2035年）》提出建设"可达性良好"的现代化城市，但理想与现实之间存在显著落差。</p>
             </div>
+            
             <div class="grid md:grid-cols-2 gap-8 mb-16">
                 <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-brand-primary"></div>
@@ -146,12 +168,25 @@
                         <h3 class="text-2xl font-bold">规划愿景</h3>
                     </div>
                     <ul class="space-y-4 text-brand-text">
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-primary mt-1"></i><span>建设"可达性良好"的现代化城市</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-primary mt-1"></i><span>居民通勤时间可控</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-primary mt-1"></i><span>公共服务均等配置</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-primary mt-1"></i><span>生活品质全面提升</span></li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-primary mt-1"></i>
+                            <span>建设"可达性良好"的现代化城市</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-primary mt-1"></i>
+                            <span>居民通勤时间可控</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-primary mt-1"></i>
+                            <span>公共服务均等配置</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-brand-primary mt-1"></i>
+                            <span>生活品质全面提升</span>
+                        </li>
                     </ul>
                 </div>
+                
                 <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-brand-accent"></div>
                     <div class="flex items-center gap-3 mb-6">
@@ -159,25 +194,41 @@
                         <h3 class="text-2xl font-bold">现实困境</h3>
                     </div>
                     <ul class="space-y-4 text-brand-text">
-                        <li class="flex items-start gap-3"><i class="fas fa-times-circle text-brand-accent mt-1"></i><span>平均通勤<strong>36分钟</strong>，远超国际标杆</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-times-circle text-brand-accent mt-1"></i><span>极端通勤（>60分钟）比例居高不下</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-times-circle text-brand-accent mt-1"></i><span>就业中心与居住中心空间分离</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-times-circle text-brand-accent mt-1"></i><span>高房价迫使大量人口外迁外围区</span></li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-brand-accent mt-1"></i>
+                            <span>平均通勤<strong>36分钟</strong>，远超国际标杆</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-brand-accent mt-1"></i>
+                            <span>极端通勤（>60分钟）比例居高不下</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-brand-accent mt-1"></i>
+                            <span>就业中心与居住中心空间分离</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-brand-accent mt-1"></i>
+                            <span>高房价迫使大量人口外迁外围区</span>
+                        </li>
                     </ul>
                 </div>
             </div>
+            
             <div class="scroll-reveal bg-gradient-to-r from-brand-surface to-brand-surface/50 rounded-2xl p-8 border border-brand-border">
                 <div class="flex items-center gap-3 mb-4">
                     <i class="fas fa-lightbulb text-brand-primary text-2xl"></i>
                     <h3 class="text-2xl font-bold">核心矛盾</h3>
                 </div>
-                <p class="text-lg leading-relaxed">南山、福田等核心商务区集中了全市绝大多数高端就业岗位，但高房价迫使大量就业人口外迁至龙岗、宝安、坪山等外围区域居住，形成<strong class="text-brand-primary">"职在核心、住在外围"</strong>的空间格局。这种大规模、长距离的跨区通勤，不仅加剧了交通系统压力，更消耗了居民大量时间与精力。</p>
+                <p class="text-lg leading-relaxed">
+                    南山、福田等核心商务区集中了全市绝大多数高端就业岗位，但高房价迫使大量就业人口外迁至龙岗、宝安、坪山等外围区域居住，形成<strong class="text-brand-primary">"职在核心、住在外围"</strong>的空间格局。这种大规模、长距离的跨区通勤，不仅加剧了交通系统压力，更消耗了居民大量时间与精力。
+                </p>
             </div>
         </div>
     </section>
 
     <div class="section-divider max-w-4xl mx-auto"></div>
 
+    <!-- Analysis Section -->
     <section id="analysis" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="scroll-reveal">
@@ -190,9 +241,11 @@
                 <p class="text-brand-muted text-lg mb-12 max-w-3xl">多源数据融合、空间可视化与产住分离的定量证据</p>
             </div>
 
+            <!-- Housing Price -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal flex items-center gap-3">
-                    <i class="fas fa-home text-brand-primary"></i>房价梯度：空间分异的量化证据
+                    <i class="fas fa-home text-brand-primary"></i>
+                    房价梯度：空间分异的量化证据
                 </h3>
                 <div class="grid lg:grid-cols-3 gap-6 mb-8">
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center card-hover">
@@ -225,9 +278,11 @@
                 </div>
             </div>
 
+            <!-- Commute Time -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal flex items-center gap-3">
-                    <i class="fas fa-clock text-brand-accent"></i>通勤时间：房价越低，通勤越长的镜像
+                    <i class="fas fa-clock text-brand-accent"></i>
+                    通勤时间：房价越低，通勤越长的镜像
                 </h3>
                 <div class="grid md:grid-cols-2 gap-6 mb-8">
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-border card-hover">
@@ -261,9 +316,11 @@
                 </div>
             </div>
 
+            <!-- Population Density -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal flex items-center gap-3">
-                    <i class="fas fa-users text-brand-primary"></i>人口密度四时刻：城市的"呼吸"节律
+                    <i class="fas fa-users text-brand-primary"></i>
+                    人口密度四时刻：城市的"呼吸"节律
                 </h3>
                 <div class="scroll-reveal map-grid mb-8">
                     <div class="image-container bg-brand-surface rounded-2xl border border-brand-border p-4">
@@ -285,184 +342,314 @@
                 </div>
             </div>
 
+            <!-- Population Change -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal flex items-center gap-3">
-                    <i class="fas fa-chart-line text-brand-accent"></i>人口潮汐：产住分离的时空证据
+                    <i class="fas fa-chart-line text-brand-accent"></i>
+                    人口潮汐：产住分离的时空证据
                 </h3>
                 <div class="grid lg:grid-cols-2 gap-8 mb-8">
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border">
                         <h4 class="text-lg font-bold mb-4 text-brand-primary">早高峰 (10:00 vs 06:00)</h4>
                         <div class="space-y-4">
-                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg"><span>南山区</span><span class="text-2xl font-bold text-brand-primary">+212.5%</span></div>
-                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg"><span>福田区</span><span class="text-2xl font-bold text-brand-primary">+211.1%</span></div>
-                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg"><span>龙岗区</span><span class="text-2xl font-bold text-brand-accent">-60.0%</span></div>
+                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg">
+                                <span>南山区</span>
+                                <span class="text-2xl font-bold text-brand-primary">+212.5%</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg">
+                                <span>福田区</span>
+                                <span class="text-2xl font-bold text-brand-primary">+211.1%</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg">
+                                <span>龙岗区</span>
+                                <span class="text-2xl font-bold text-brand-accent">-60.0%</span>
+                            </div>
                         </div>
-                        <div class="mt-4"><img src="images/深圳人口密度变化百分比_10点vs6点.png" alt="早高峰变化" class="w-full rounded-lg"></div>
+                        <div class="mt-4">
+                            <img src="images/深圳人口密度变化百分比_10点vs6点.png" alt="早高峰变化" class="w-full rounded-lg">
+                        </div>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border">
                         <h4 class="text-lg font-bold mb-4 text-brand-accent">晚高峰 (19:00 vs 15:00)</h4>
                         <div class="space-y-4">
-                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg"><span>龙岗区</span><span class="text-2xl font-bold text-brand-primary">+81.8%</span></div>
-                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg"><span>宝安区</span><span class="text-2xl font-bold text-brand-primary">+63.6%</span></div>
-                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg"><span>福田区</span><span class="text-2xl font-bold text-brand-accent">-20.0%</span></div>
+                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg">
+                                <span>龙岗区</span>
+                                <span class="text-2xl font-bold text-brand-primary">+81.8%</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg">
+                                <span>宝安区</span>
+                                <span class="text-2xl font-bold text-brand-primary">+63.6%</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-brand-bg rounded-lg">
+                                <span>福田区</span>
+                                <span class="text-2xl font-bold text-brand-accent">-20.0%</span>
+                            </div>
                         </div>
-                        <div class="mt-4"><img src="images/深圳人口密度变化百分比_19点vs15点.png" alt="晚高峰变化" class="w-full rounded-lg"></div>
+                        <div class="mt-4">
+                            <img src="images/深圳人口密度变化百分比_19点vs15点.png" alt="晚高峰变化" class="w-full rounded-lg">
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Special Regions -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal flex items-center gap-3">
-                    <i class="fas fa-map-marked-alt text-brand-primary"></i>特殊区域：打破潮汐规律的三区
+                    <i class="fas fa-map-marked-alt text-brand-primary"></i>
+                    特殊区域：打破潮汐规律的三区
                 </h3>
                 <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border mb-8">
                     <img src="images/罗湖盐田大鹏分时段人口密度折线图.png" alt="特殊区域折线图" class="w-full h-auto rounded-lg">
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border card-hover">
-                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4"><i class="fas fa-store text-brand-primary text-xl"></i></div>
+                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-store text-brand-primary text-xl"></i>
+                        </div>
                         <h4 class="text-xl font-bold mb-3">罗湖区</h4>
                         <p class="text-brand-muted">商业+口岸+居住+旅游功能混合，稀释了标准潮汐信号</p>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border card-hover">
-                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4"><i class="fas fa-ship text-brand-primary text-xl"></i></div>
+                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-ship text-brand-primary text-xl"></i>
+                        </div>
                         <h4 class="text-xl font-bold mb-3">盐田区</h4>
                         <p class="text-brand-muted">港口物流+滨海旅游，轮班作业持续吸引外来人口</p>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border card-hover">
-                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4"><i class="fas fa-tree text-brand-primary text-xl"></i></div>
+                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-tree text-brand-primary text-xl"></i>
+                        </div>
                         <h4 class="text-xl font-bold mb-3">大鹏新区</h4>
                         <p class="text-brand-muted">旅游度假+生态保护驱动，非就业通勤主导</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Dapeng Paradox -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal flex items-center gap-3">
-                    <i class="fas fa-exclamation-circle text-brand-accent"></i>"大鹏悖论"：低房价与最长通勤的深层矛盾
+                    <i class="fas fa-exclamation-circle text-brand-accent"></i>
+                    "大鹏悖论"：低房价与最长通勤的深层矛盾
                 </h3>
                 <div class="grid md:grid-cols-4 gap-4 mb-8">
-                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center"><div class="text-3xl font-bold text-brand-text mb-2">30,557</div><div class="text-sm text-brand-muted">元/㎡</div><div class="text-xs text-brand-primary mt-1">全市倒数第二</div></div>
-                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center"><div class="text-3xl font-bold text-brand-text mb-2">45</div><div class="text-sm text-brand-muted">元/㎡·月</div><div class="text-xs text-brand-primary mt-1">全市最低</div></div>
-                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center"><div class="text-3xl font-bold text-brand-text mb-2">0.10</div><div class="text-sm text-brand-muted">清晨密度</div><div class="text-xs text-brand-primary mt-1">全市最低</div></div>
-                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center"><div class="text-3xl font-bold text-brand-accent mb-2">90</div><div class="text-sm text-brand-muted">分钟</div><div class="text-xs text-brand-accent mt-1">全市最长通勤</div></div>
+                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center">
+                        <div class="text-3xl font-bold text-brand-text mb-2">30,557</div>
+                        <div class="text-sm text-brand-muted">元/㎡</div>
+                        <div class="text-xs text-brand-primary mt-1">全市倒数第二</div>
+                    </div>
+                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center">
+                        <div class="text-3xl font-bold text-brand-text mb-2">45</div>
+                        <div class="text-sm text-brand-muted">元/㎡·月</div>
+                        <div class="text-xs text-brand-primary mt-1">全市最低</div>
+                    </div>
+                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center">
+                        <div class="text-3xl font-bold text-brand-text mb-2">0.10</div>
+                        <div class="text-sm text-brand-muted">清晨密度</div>
+                        <div class="text-xs text-brand-primary mt-1">全市最低</div>
+                    </div>
+                    <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border text-center">
+                        <div class="text-3xl font-bold text-brand-accent mb-2">90</div>
+                        <div class="text-sm text-brand-muted">分钟</div>
+                        <div class="text-xs text-brand-accent mt-1">全市最长通勤</div>
+                    </div>
                 </div>
                 <div class="scroll-reveal bg-gradient-to-r from-brand-accent/10 to-transparent rounded-2xl p-8 border border-brand-accent/30">
                     <h4 class="text-xl font-bold text-brand-accent mb-4">核心启示</h4>
-                    <p class="text-lg leading-relaxed">大鹏同时呈现低房价、低租金、低人口密度与最长通勤四个看似矛盾的特征。根源在于<strong>地理隔离（无地铁）</strong>与<strong>产业单一（缺乏高端就业）</strong>。这深刻说明：单纯的房价调控无法解决产住分离，若缺乏就业承载力与交通可达性，低价住房无法转化为有效居住选择。</p>
+                    <p class="text-lg leading-relaxed">
+                        大鹏同时呈现低房价、低租金、低人口密度与最长通勤四个看似矛盾的特征。根源在于<strong>地理隔离（无地铁）</strong>与<strong>产业单一（缺乏高端就业）</strong>。这深刻说明：单纯的房价调控无法解决产住分离，若缺乏就业承载力与交通可达性，低价住房无法转化为有效居住选择。
+                    </p>
                 </div>
             </div>
 
+            <!-- Analysis Conclusion -->
             <div class="scroll-reveal bg-gradient-to-r from-brand-surface to-brand-surface/50 rounded-2xl p-8 border border-brand-border">
                 <h3 class="text-2xl font-bold mb-6 text-brand-primary">时空分析核心结论</h3>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="p-6 bg-brand-bg rounded-xl"><div class="text-brand-primary text-4xl mb-3"><i class="fas fa-map-marker-alt"></i></div><h4 class="text-xl font-bold mb-2">空间维度</h4><p class="text-brand-muted">就业中心与居住中心极端分离</p></div>
-                    <div class="p-6 bg-brand-bg rounded-xl"><div class="text-brand-accent text-4xl mb-3"><i class="fas fa-clock"></i></div><h4 class="text-xl font-bold mb-2">时间维度</h4><p class="text-brand-muted">大规模单向通勤潮汐消耗社会资源</p></div>
-                    <div class="p-6 bg-brand-bg rounded-xl"><div class="text-brand-primary text-4xl mb-3"><i class="fas fa-industry"></i></div><h4 class="text-xl font-bold mb-2">产业维度</h4><p class="text-brand-muted">外围区缺乏匹配就业岗位</p></div>
+                    <div class="p-6 bg-brand-bg rounded-xl">
+                        <div class="text-brand-primary text-4xl mb-3"><i class="fas fa-map-marker-alt"></i></div>
+                        <h4 class="text-xl font-bold mb-2">空间维度</h4>
+                        <p class="text-brand-muted">就业中心与居住中心极端分离</p>
+                    </div>
+                    <div class="p-6 bg-brand-bg rounded-xl">
+                        <div class="text-brand-accent text-4xl mb-3"><i class="fas fa-clock"></i></div>
+                        <h4 class="text-xl font-bold mb-2">时间维度</h4>
+                        <p class="text-brand-muted">大规模单向通勤潮汐消耗社会资源</p>
+                    </div>
+                    <div class="p-6 bg-brand-bg rounded-xl">
+                        <div class="text-brand-primary text-4xl mb-3"><i class="fas fa-industry"></i></div>
+                        <h4 class="text-xl font-bold mb-2">产业维度</h4>
+                        <p class="text-brand-muted">外围区缺乏匹配就业岗位</p>
+                    </div>
                 </div>
-                <div class="mt-6 text-center text-lg"><span class="text-brand-muted">房价梯度与通勤时间梯度呈</span><span class="text-brand-accent font-bold">高度负相关</span></div>
+                <div class="mt-6 text-center text-lg">
+                    <span class="text-brand-muted">房价梯度与通勤时间梯度呈</span>
+                    <span class="text-brand-accent font-bold">高度负相关</span>
+                </div>
             </div>
         </div>
     </section>
 
     <div class="section-divider max-w-4xl mx-auto"></div>
 
+    <!-- Experience Section -->
     <section id="experience" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="scroll-reveal">
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center"><span class="text-2xl font-black text-brand-primary">03</span></div>
+                    <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                        <span class="text-2xl font-black text-brand-primary">03</span>
+                    </div>
                     <h2 class="text-4xl font-black">国际经验与深圳实践</h2>
                 </div>
                 <p class="text-brand-muted text-lg mb-12 max-w-3xl">他山之石与深圳自身的破局之路</p>
             </div>
 
+            <!-- International Cases -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal">国际经验</h3>
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-primary to-brand-primary/50"></div>
-                        <div class="w-14 h-14 rounded-full bg-brand-primary/10 flex items-center justify-center mb-6"><i class="fas fa-city text-brand-primary text-2xl"></i></div>
+                        <div class="w-14 h-14 rounded-full bg-brand-primary/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-city text-brand-primary text-2xl"></i>
+                        </div>
                         <h4 class="text-2xl font-bold mb-4">东京多中心模式</h4>
                         <ul class="space-y-3 text-brand-muted">
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-brand-primary mt-1 text-sm"></i><span>新宿、涩谷、池袋等<strong class="text-brand-text">7个副都心</strong></span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-brand-primary mt-1 text-sm"></i><span>JR线与私铁网络实现多中心通勤</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-brand-primary mt-1 text-sm"></i><span>平均通勤控制在<strong class="text-brand-text">45分钟</strong>内</span></li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-brand-primary mt-1 text-sm"></i>
+                                <span>新宿、涩谷、池袋等<strong class="text-brand-text">7个副都心</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-brand-primary mt-1 text-sm"></i>
+                                <span>JR线与私铁网络实现多中心通勤</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-brand-primary mt-1 text-sm"></i>
+                                <span>平均通勤控制在<strong class="text-brand-text">45分钟</strong>内</span>
+                            </li>
                         </ul>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-500/50"></div>
-                        <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6"><i class="fas fa-train text-blue-500 text-2xl"></i></div>
+                        <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-train text-blue-500 text-2xl"></i>
+                        </div>
                         <h4 class="text-2xl font-bold mb-4">巴黎 RER 快线</h4>
                         <ul class="space-y-3 text-brand-muted">
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1 text-sm"></i><span>大站距、快速度</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1 text-sm"></i><span>远郊通勤控制在<strong class="text-brand-text">45分钟</strong>内</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-1 text-sm"></i><span>五线覆盖法兰西岛</span></li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-500 mt-1 text-sm"></i>
+                                <span>大站距、快速度</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-500 mt-1 text-sm"></i>
+                                <span>远郊通勤控制在<strong class="text-brand-text">45分钟</strong>内</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-500 mt-1 text-sm"></i>
+                                <span>五线覆盖法兰西岛</span>
+                            </li>
                         </ul>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent to-brand-accent/50"></div>
-                        <div class="w-14 h-14 rounded-full bg-brand-accent/10 flex items-center justify-center mb-6"><i class="fas fa-building text-brand-accent text-2xl"></i></div>
+                        <div class="w-14 h-14 rounded-full bg-brand-accent/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-building text-brand-accent text-2xl"></i>
+                        </div>
                         <h4 class="text-2xl font-bold mb-4">新加坡 TOD 模式</h4>
                         <ul class="space-y-3 text-brand-muted">
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-brand-accent mt-1 text-sm"></i><span>地铁站<strong class="text-brand-text">500米</strong>半径闭环</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-brand-accent mt-1 text-sm"></i><span>高密度住宅与交通一体化</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-brand-accent mt-1 text-sm"></i><span>减少跨区通勤需求</span></li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-brand-accent mt-1 text-sm"></i>
+                                <span>地铁站<strong class="text-brand-text">500米</strong>半径闭环</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-brand-accent mt-1 text-sm"></i>
+                                <span>高密度住宅与交通一体化</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-brand-accent mt-1 text-sm"></i>
+                                <span>减少跨区通勤需求</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
+            <!-- Shenzhen Measures -->
             <div class="mb-20">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal">深圳正在采取的措施</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border card-hover">
-                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4"><i class="fas fa-subway text-brand-primary text-xl"></i></div>
+                        <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-subway text-brand-primary text-xl"></i>
+                        </div>
                         <h4 class="text-lg font-bold mb-2">深大城际</h4>
                         <p class="text-sm text-brand-muted">连接东部与惠州，缩短龙岗/坪山/大鹏通勤</p>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border card-hover">
-                        <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4"><i class="fas fa-route text-blue-500 text-xl"></i></div>
+                        <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-route text-blue-500 text-xl"></i>
+                        </div>
                         <h4 class="text-lg font-bold mb-2">深惠城际</h4>
                         <p class="text-sm text-brand-muted">强化深惠轨道联系，拓展居住选择半径</p>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border card-hover">
-                        <div class="w-12 h-12 rounded-lg bg-brand-accent/10 flex items-center justify-center mb-4"><i class="fas fa-train text-brand-accent text-xl"></i></div>
+                        <div class="w-12 h-12 rounded-lg bg-brand-accent/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-train text-brand-accent text-xl"></i>
+                        </div>
                         <h4 class="text-lg font-bold mb-2">8号线东延</h4>
                         <p class="text-sm text-brand-muted">直接解决大鹏无地铁的历史困境</p>
                     </div>
                     <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border card-hover">
-                        <div class="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center mb-4"><i class="fas fa-bolt text-yellow-500 text-xl"></i></div>
+                        <div class="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-bolt text-yellow-500 text-xl"></i>
+                        </div>
                         <h4 class="text-lg font-bold mb-2">轨道快线</h4>
                         <p class="text-sm text-brand-muted">大站快线模式（如14号线），缩短在途时间</p>
                     </div>
                 </div>
                 <div class="scroll-reveal bg-brand-surface rounded-2xl p-6 border border-brand-border">
-                    <div class="flex items-center gap-3 mb-4"><i class="fas fa-landmark text-brand-primary text-xl"></i><h4 class="text-xl font-bold">多中心建设</h4></div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-landmark text-brand-primary text-xl"></i>
+                        <h4 class="text-xl font-bold">多中心建设</h4>
+                    </div>
                     <p class="text-brand-muted">强化宝安中心、龙岗大运、光明科学城等副中心建设，构建"一核多心"空间结构</p>
                 </div>
             </div>
 
+            <!-- Future Vision -->
             <div class="scroll-reveal bg-gradient-to-br from-brand-surface to-brand-bg rounded-2xl p-8 border border-brand-primary/30">
                 <h3 class="text-2xl font-bold mb-8 text-brand-primary">未来愿景：可达性良好的现代化城市</h3>
                 <div class="relative">
                     <div class="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-primary"></div>
                     <div class="grid md:grid-cols-4 gap-6 relative">
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-brand-primary/20 border-2 border-brand-primary flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-2xl font-bold text-brand-primary">1</span></div>
-                            <h4 class="font-bold mb-2">轨道交通加密</h4><p class="text-sm text-brand-muted">缩短物理时间</p>
+                            <div class="w-16 h-16 rounded-full bg-brand-primary/20 border-2 border-brand-primary flex items-center justify-center mx-auto mb-4 relative z-10">
+                                <span class="text-2xl font-bold text-brand-primary">1</span>
+                            </div>
+                            <h4 class="font-bold mb-2">轨道交通加密</h4>
+                            <p class="text-sm text-brand-muted">缩短物理时间</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-brand-accent/20 border-2 border-brand-accent flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-2xl font-bold text-brand-accent">2</span></div>
-                            <h4 class="font-bold mb-2">重塑时空认知</h4><p class="text-sm text-brand-muted">远郊→近城</p>
+                            <div class="w-16 h-16 rounded-full bg-brand-accent/20 border-2 border-brand-accent flex items-center justify-center mx-auto mb-4 relative z-10">
+                                <span class="text-2xl font-bold text-brand-accent">2</span>
+                            </div>
+                            <h4 class="font-bold mb-2">重塑时空认知</h4>
+                            <p class="text-sm text-brand-muted">远郊→近城</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-2xl font-bold text-blue-500">3</span></div>
-                            <h4 class="font-bold mb-2">TOD开发</h4><p class="text-sm text-brand-muted">站点周边植入就业</p>
+                            <div class="w-16 h-16 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center mx-auto mb-4 relative z-10">
+                                <span class="text-2xl font-bold text-blue-500">3</span>
+                            </div>
+                            <h4 class="font-bold mb-2">TOD开发</h4>
+                            <p class="text-sm text-brand-muted">站点周边植入就业</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center mx-auto mb-4 relative z-10"><span class="text-2xl font-bold text-purple-500">4</span></div>
-                            <h4 class="font-bold mb-2">一核多心</h4><p class="text-sm text-brand-muted">45分钟通勤圈</p>
+                            <div class="w-16 h-16 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center mx-auto mb-4 relative z-10">
+                                <span class="text-2xl font-bold text-purple-500">4</span>
+                            </div>
+                            <h4 class="font-bold mb-2">一核多心</h4>
+                            <p class="text-sm text-brand-muted">45分钟通勤圈</p>
                         </div>
                     </div>
                 </div>
@@ -472,75 +659,141 @@
 
     <div class="section-divider max-w-4xl mx-auto"></div>
 
+    <!-- Conclusion Section -->
     <section id="conclusion" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="scroll-reveal">
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center"><span class="text-2xl font-black text-brand-primary">04</span></div>
+                    <div class="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                        <span class="text-2xl font-black text-brand-primary">04</span>
+                    </div>
                     <h2 class="text-4xl font-black">结论建议</h2>
                 </div>
                 <p class="text-brand-muted text-lg mb-12 max-w-3xl">从数据到行动：系统性破局路径</p>
             </div>
 
+            <!-- Core Findings -->
             <div class="scroll-reveal bg-gradient-to-r from-brand-surface to-brand-surface/50 rounded-2xl p-8 border border-brand-border mb-12">
                 <h3 class="text-2xl font-bold mb-6 text-brand-primary">核心发现：三重失衡的系统性错配</h3>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="p-6 bg-brand-bg rounded-xl border border-brand-border"><div class="text-3xl font-bold text-brand-primary mb-3">空间</div><p class="text-brand-muted">就业中心（南山/福田）与居住中心（龙岗/宝安）极端分离</p></div>
-                    <div class="p-6 bg-brand-bg rounded-xl border border-brand-border"><div class="text-3xl font-bold text-brand-accent mb-3">时间</div><p class="text-brand-muted">大规模单向通勤潮汐消耗巨量社会资源</p></div>
-                    <div class="p-6 bg-brand-bg rounded-xl border border-brand-border"><div class="text-3xl font-bold text-brand-primary mb-3">产业</div><p class="text-brand-muted">外围区缺乏与核心区匹配的就业岗位与产业层次</p></div>
+                    <div class="p-6 bg-brand-bg rounded-xl border border-brand-border">
+                        <div class="text-3xl font-bold text-brand-primary mb-3">空间</div>
+                        <p class="text-brand-muted">就业中心（南山/福田）与居住中心（龙岗/宝安）极端分离</p>
+                    </div>
+                    <div class="p-6 bg-brand-bg rounded-xl border border-brand-border">
+                        <div class="text-3xl font-bold text-brand-accent mb-3">时间</div>
+                        <p class="text-brand-muted">大规模单向通勤潮汐消耗巨量社会资源</p>
+                    </div>
+                    <div class="p-6 bg-brand-bg rounded-xl border border-brand-border">
+                        <div class="text-3xl font-bold text-brand-primary mb-3">产业</div>
+                        <p class="text-brand-muted">外围区缺乏与核心区匹配的就业岗位与产业层次</p>
+                    </div>
                 </div>
-                <div class="mt-6 text-center p-4 bg-brand-bg rounded-lg"><span class="text-brand-muted">房价梯度与通勤时间梯度呈</span><span class="text-brand-accent font-bold text-xl">高度负相关</span><span class="text-brand-muted">（9.5万/㎡→25分钟 vs 3.1万/㎡→90分钟）</span></div>
+                <div class="mt-6 text-center p-4 bg-brand-bg rounded-lg">
+                    <span class="text-brand-muted">房价梯度与通勤时间梯度呈</span>
+                    <span class="text-brand-accent font-bold text-xl">高度负相关</span>
+                    <span class="text-brand-muted">（9.5万/㎡→25分钟 vs 3.1万/㎡→90分钟）</span>
+                </div>
             </div>
 
+            <!-- Suggestions -->
             <div class="mb-12">
                 <h3 class="text-2xl font-bold mb-8 scroll-reveal">可行性建议</h3>
                 <div class="space-y-4">
                     <div class="scroll-reveal flex items-start gap-4 p-6 bg-brand-surface rounded-xl border border-brand-border">
-                        <div class="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-brand-primary font-bold">1</span></div>
-                        <div><h4 class="text-lg font-bold mb-2">轨道交通加密</h4><p class="text-brand-muted">推进深大城际、深惠城际、8号线东延、轨道快线网络建设，缩短外围区至核心区的在途时间</p></div>
+                        <div class="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
+                            <span class="text-brand-primary font-bold">1</span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">轨道交通加密</h4>
+                            <p class="text-brand-muted">推进深大城际、深惠城际、8号线东延、轨道快线网络建设，缩短外围区至核心区的在途时间</p>
+                        </div>
                     </div>
                     <div class="scroll-reveal flex items-start gap-4 p-6 bg-brand-surface rounded-xl border border-brand-border">
-                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0"><span class="text-blue-500 font-bold">2</span></div>
-                        <div><h4 class="text-lg font-bold mb-2">多中心建设</h4><p class="text-brand-muted">强化宝安中心、龙岗大运、光明科学城等副中心建设，避免就业过度集中于南山-福田</p></div>
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                            <span class="text-blue-500 font-bold">2</span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">多中心建设</h4>
+                            <p class="text-brand-muted">强化宝安中心、龙岗大运、光明科学城等副中心建设，避免就业过度集中于南山-福田</p>
+                        </div>
                     </div>
                     <div class="scroll-reveal flex items-start gap-4 p-6 bg-brand-surface rounded-xl border border-brand-border">
-                        <div class="w-10 h-10 rounded-lg bg-brand-accent/10 flex items-center justify-center flex-shrink-0"><span class="text-brand-accent font-bold">3</span></div>
-                        <div><h4 class="text-lg font-bold mb-2">TOD开发</h4><p class="text-brand-muted">在轨道站点周边（如坪山中心、大鹏新大站）推行TOD开发，植入本地就业岗位，实现产城融合</p></div>
+                        <div class="w-10 h-10 rounded-lg bg-brand-accent/10 flex items-center justify-center flex-shrink-0">
+                            <span class="text-brand-accent font-bold">3</span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">TOD开发</h4>
+                            <p class="text-brand-muted">在轨道站点周边（如坪山中心、大鹏新大站）推行TOD开发，植入本地就业岗位，实现产城融合</p>
+                        </div>
                     </div>
                     <div class="scroll-reveal flex items-start gap-4 p-6 bg-brand-surface rounded-xl border border-brand-border">
-                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0"><span class="text-purple-500 font-bold">4</span></div>
-                        <div><h4 class="text-lg font-bold mb-2">政策协同</h4><p class="text-brand-muted">房价调控需与就业承载力、交通可达性同步推进，避免"无效低房价"困境</p></div>
+                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                            <span class="text-purple-500 font-bold">4</span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2">政策协同</h4>
+                            <p class="text-brand-muted">房价调控需与就业承载力、交通可达性同步推进，避免"无效低房价"困境</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- For People -->
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-primary/30 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-brand-primary"></div>
-                    <div class="flex items-center gap-3 mb-6"><i class="fas fa-users text-brand-primary text-2xl"></i><h3 class="text-2xl font-bold">对市民</h3></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-users text-brand-primary text-2xl"></i>
+                        <h3 class="text-2xl font-bold">对市民</h3>
+                    </div>
                     <ul class="space-y-4 text-brand-text">
-                        <li class="flex items-start gap-3"><i class="fas fa-arrow-right text-brand-primary mt-1"></i><span>关注轨道沿线<strong>TOD区域</strong>的时间价值跃升</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-arrow-right text-brand-primary mt-1"></i><span>随着深大/深惠城际建成，坪山/大亚湾等区域将因轨道接入实现<strong>"时间跃升"</strong></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-arrow-right text-brand-primary mt-1"></i><span>房产与居住价值值得提前关注</span></li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-brand-primary mt-1"></i>
+                            <span>关注轨道沿线<strong>TOD区域</strong>的时间价值跃升</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-brand-primary mt-1"></i>
+                            <span>随着深大/深惠城际建成，坪山/大亚湾等区域将因轨道接入实现<strong>"时间跃升"</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-brand-primary mt-1"></i>
+                            <span>房产与居住价值值得提前关注</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="scroll-reveal bg-brand-surface rounded-2xl p-8 border border-brand-accent/30 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-brand-accent"></div>
-                    <div class="flex items-center gap-3 mb-6"><i class="fas fa-graduation-cap text-brand-accent text-2xl"></i><h3 class="text-2xl font-bold">对大学生</h3></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-graduation-cap text-brand-accent text-2xl"></i>
+                        <h3 class="text-2xl font-bold">对大学生</h3>
+                    </div>
                     <ul class="space-y-4 text-brand-text">
-                        <li class="flex items-start gap-3"><i class="fas fa-arrow-right text-brand-accent mt-1"></i><span>职业半径从<strong>"深圳市域"</strong>扩展为<strong>"深圳都市圈"</strong></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-arrow-right text-brand-accent mt-1"></i><span>跨城通勤（深圳-东莞、深圳-惠州）将成为<strong>常态</strong></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-arrow-right text-brand-accent mt-1"></i><span>基于<strong>"轨道时间圈"</strong>重新规划职业发展地理</span></li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-brand-accent mt-1"></i>
+                            <span>职业半径从<strong>"深圳市域"</strong>扩展为<strong>"深圳都市圈"</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-brand-accent mt-1"></i>
+                            <span>跨城通勤（深圳-东莞、深圳-惠州）将成为<strong>常态</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-brand-accent mt-1"></i>
+                            <span>基于<strong>"轨道时间圈"</strong>重新规划职业发展地理</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="py-12 border-t border-brand-border">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="flex items-center justify-center gap-3 mb-4">
-                <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-primary to-brand-accent flex items-center justify-center"><i class="fas fa-city text-white text-sm"></i></div>
+                <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-primary to-brand-accent flex items-center justify-center">
+                    <i class="fas fa-city text-white text-sm"></i>
+                </div>
                 <span class="font-bold text-lg">深圳产住分离与通勤特征研究</span>
             </div>
             <p class="text-brand-muted mb-4">基于多源数据的城市空间可视化分析</p>
@@ -552,27 +805,123 @@
     </footer>
 
     <script>
+        // Scroll Progress Bar
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById('progressBar').style.width = (scrollTop / scrollHeight) * 100 + '%';
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Navbar background
             const navbar = document.getElementById('navbar');
-            if (scrollTop > 50) { navbar.classList.add('nav-scrolled'); } else { navbar.classList.remove('nav-scrolled'); }
+            if (scrollTop > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
         });
-        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Scroll Reveal Animation
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
         document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
-        new Chart(document.getElementById('priceChart').getContext('2d'), {
-            type: 'bar', data: { labels: ['南山','福田','罗湖','宝安','龙华','盐田','光明','龙岗','大鹏','坪山'], datasets: [{ label: '成交均价（元/㎡）', data: [95285,83434,56250,48500,42000,38000,35000,32000,30557,25826], backgroundColor: '#00D4AA', borderRadius: 6 }] },
-            options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } }, scales: { x: { grid: { color: '#2D3A4F' }, ticks: { color: '#8A99AF' } }, y: { grid: { display: false }, ticks: { color: '#E8ECF1' } } } }
+
+        // Price Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['南山', '福田', '罗湖', '宝安', '龙华', '盐田', '光明', '龙岗', '大鹏', '坪山'],
+                datasets: [{
+                    label: '成交均价（元/㎡）',
+                    data: [95285, 83434, 56250, 48500, 42000, 38000, 35000, 32000, 30557, 25826],
+                    backgroundColor: '#00D4AA',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { color: '#2D3A4F' }, ticks: { color: '#8A99AF' } },
+                    y: { grid: { display: false }, ticks: { color: '#E8ECF1' } }
+                }
+            }
         });
-        new Chart(document.getElementById('commuteChart').getContext('2d'), {
-            type: 'bar', data: { labels: ['大鹏','坪山','龙岗','宝安','龙华','福田','南山'], datasets: [{ label: '工作日', data: [90,75,60,45,40,30,25], backgroundColor: '#FF6B35', borderRadius: 6 }, { label: '节假日', data: [60,50,50,40,35,30,25], backgroundColor: '#00D4AA', borderRadius: 6 }] },
-            options: { responsive: true, plugins: { legend: { labels: { color: '#8A99AF' } } }, scales: { x: { grid: { display: false }, ticks: { color: '#E8ECF1' } }, y: { grid: { color: '#2D3A4F' }, ticks: { color: '#8A99AF' } } } }
+
+        // Commute Chart
+        const commuteCtx = document.getElementById('commuteChart').getContext('2d');
+        new Chart(commuteCtx, {
+            type: 'bar',
+            data: {
+                labels: ['大鹏', '坪山', '龙岗', '宝安', '龙华', '福田', '南山'],
+                datasets: [{
+                    label: '工作日',
+                    data: [90, 75, 60, 45, 40, 30, 25],
+                    backgroundColor: '#FF6B35',
+                    borderRadius: 6
+                }, {
+                    label: '节假日',
+                    data: [60, 50, 50, 40, 35, 30, 25],
+                    backgroundColor: '#00D4AA',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { labels: { color: '#8A99AF' } } },
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: '#E8ECF1' } },
+                    y: { grid: { color: '#2D3A4F' }, ticks: { color: '#8A99AF' } }
+                }
+            }
         });
     </script>
+
+<script>
+// Image loader: fetch .txt files and convert to data URLs
+document.addEventListener('DOMContentLoaded', function() {
+    var images = document.querySelectorAll('img');
+    images.forEach(function(img) {
+        var src = img.getAttribute('src');
+        if (src && src.endsWith('.png')) {
+            var txtSrc = src + '.txt';
+            fetch(txtSrc)
+                .then(function(r) { return r.text(); })
+                .then(function(b64) {
+                    img.src = 'data:image/png;base64,' + b64.trim();
+                })
+                .catch(function(e) {
+                    console.error('Failed to load image:', txtSrc, e);
+                });
+        }
+    });
+});
+</script>
 </body>
 </html>
